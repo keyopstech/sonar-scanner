@@ -5,6 +5,7 @@ ENV SONAR_SCANNER_VERSION=3.3.0.1492
 RUN apk add --no-cache curl grep sed unzip bash nodejs nodejs-npm && \
     npm install -g typescript
 
+ENV NODE_PATH "/usr/lib/node_modules/"
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
