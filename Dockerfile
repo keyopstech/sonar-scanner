@@ -22,8 +22,4 @@ ENV SONAR_RUNNER_HOME=/usr/lib/sonar-scanner
 #   ensure Sonar uses the provided Java for musl instead of a borked glibc one
 RUN sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' /usr/lib/sonar-scanner/bin/sonar-scanner
 
-# Separating ENTRYPOINT and CMD operations allows for core execution variables to
-# be easily overridden by passing them in as part of the `docker run` command.
-# This allows the default /usr/src base dir to be overridden by users as-needed.
 ENTRYPOINT ["sonar-scanner"] 
-CMD ["-Dsonar.projectBaseDir=/usr/src"]
